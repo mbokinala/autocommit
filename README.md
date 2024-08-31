@@ -11,3 +11,4 @@ Todo:
 - [ ] Proper bundling/distribution system
 - [ ] Add more LLM providers / model options
 - [ ] Proper documentation
+- [ ] customizable system prompt
