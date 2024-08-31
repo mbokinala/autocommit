@@ -1,0 +1,16 @@
+{
+  "name": "auto-commit-message",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@ai-sdk/openai": "^0.0.54",
+    "ai": "^3.3.21",
+    "zod": "^3.23.8"
+  }
+}
