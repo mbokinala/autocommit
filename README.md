@@ -7,6 +7,7 @@ Status: Work in Progress
 
 Todo:
 
+- [ ] Bug fix: don't include commit body if not generated
 - [ ] Proper bundling/distribution system
 - [ ] Add more LLM providers / model options
 - [ ] Proper documentation
