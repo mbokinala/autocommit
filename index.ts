@@ -67,16 +67,6 @@ async function generateCommitMessage(diff: string) {
 async function main() {
   const commitMessage = await generateCommitMessage(diff);
 
-  // let commitCommand = "git commit";
-  // commitCommand += ` -m "${commitMessage.summary}"`;
-  // if (commitMessage.body) {
-  //   commitCommand += ` -m "${commitMessage.body}"`;
-  // }
-  // console.log("commit msg", commitCommand);
-  // // TODO: get user confirmation before committing
-
-  // execSync(commitCommand, { stdio: "inherit" });
-
   const result = spawnSync(
     "git",
     [
