@@ -18,14 +18,14 @@ A small command-line utility to generate commit messages by passing the git diff
     ```
 
 ## Usage
-```
+```sh
 git add <...>
 autocommit
 ```
 
 Alternatively, pass the `-a` flag to add all unstaged changes to the commit:
 
-```
+```sh
 autocommit -a
 ```
 
