@@ -67,7 +67,7 @@ async function generateCommitMessage(diff: string) {
 async function main() {
   const commitMessage = await generateCommitMessage(diff);
 
-  const result = spawnSync(
+  spawnSync(
     "git",
     [
       "commit",
