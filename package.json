@@ -1,5 +1,5 @@
 {
-  "name": "auto-commit-message",
+  "name": "autocommit",
   "version": "0.0.1",
   "description": "Use an LLM to generate a git commit message based on the diff",
   "main": "index.js",
