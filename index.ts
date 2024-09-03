@@ -2,24 +2,37 @@
 
 import { createOpenAI } from "@ai-sdk/openai";
 import { generateObject } from "ai";
-import { execSync } from "child_process";
+import { execSync, spawnSync } from "child_process";
 import { z } from "zod";
 
-// check for process.env.OPENAI_API_KEY
-if (!process.env.OPENAI_API_KEY) {
+import { program } from "commander";
+
+program.name("autocommit");
+program.option("--openai-api-key <key>", "OpenAI API key");
+program.option("-a, --all", "add all changes to the commit");
+program.parse();
+
+const options = program.opts();
+
+const OPENAI_API_KEY = options.openaiApiKey || process.env.OPENAI_API_KEY;
+
+// check for OPENAI_API_KEY
+if (!OPENAI_API_KEY) {
   console.log(
-    "No OpenAI API key found. Please set your OpenAI API key in the environment variables."
+    "No OpenAI API key found. Please set your OpenAI API key in the environment variables or pass it using --openai-api-key"
   );
   process.exit(1);
 }
 
 const openai = createOpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
+  apiKey: OPENAI_API_KEY,
 });
 
-const args = process.argv.slice(2);
-
 const SYSTEM_PROMPT = `You are a helpful assistant that produces git commit messages based on the changes in a git diff.`;
+
+if (options.all) {
+  execSync("git add -A", { stdio: "inherit" });
+}
 
 // get the diff
 const diff = execSync("git --no-pager diff --staged").toString();
@@ -51,10 +64,31 @@ async function generateCommitMessage(diff: string) {
   return object;
 }
 
-generateCommitMessage(diff).then((commitMessage) => {
-  // execute the git commit command
-  execSync(
-    `git commit -m "${commitMessage.summary}" -m "${commitMessage.body}"`,
-    { stdio: "inherit" }
+async function main() {
+  const commitMessage = await generateCommitMessage(diff);
+
+  // let commitCommand = "git commit";
+  // commitCommand += ` -m "${commitMessage.summary}"`;
+  // if (commitMessage.body) {
+  //   commitCommand += ` -m "${commitMessage.body}"`;
+  // }
+  // console.log("commit msg", commitCommand);
+  // // TODO: get user confirmation before committing
+
+  // execSync(commitCommand, { stdio: "inherit" });
+
+  const result = spawnSync(
+    "git",
+    [
+      "commit",
+      "-m",
+      commitMessage.summary,
+      ...(commitMessage.body ? ["-m", commitMessage.body] : []),
+    ],
+    {
+      stdio: "inherit",
+    }
   );
-});
+}
+
+main();

@@ -5,13 +5,17 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc && npx pkg index.js -o autocommit"
+    "build": "tsc"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@ai-sdk/openai": "^0.0.54",
     "ai": "^3.3.21",
+    "commander": "^12.1.0",
     "zod": "^3.23.8"
+  },
+  "bin": {
+    "autocommit": "./bin/index.js"
   }
 }
