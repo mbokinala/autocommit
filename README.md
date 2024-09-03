@@ -2,7 +2,7 @@
 
 A small command-line utility to generate commit messages by passing the git diff to an LLM. No more `"wip"`, `"stuff`, or `"sdmcskdc"` cluttering the commit log.
 
-# Installation
+## Installation
 
 **TODO: make accessible via npm**
 
@@ -10,14 +10,14 @@ A small command-line utility to generate commit messages by passing the git diff
 2. Install dependences with `npm install`
 3. Install the tool globally with `npm install -g .`
 
-# Setup
+## Setup
 1. Get an API key from [OpenAI](https://platform.openai.com/account/api-keys)
 2. Set the API key as an environment variable in your `.zshrc` or `.bashrc`:
     ```
     export OPENAI_API_KEY=...
     ```
 
-# Usage
+## Usage
 ```
 git add <...>
 autocommit
@@ -29,7 +29,7 @@ Alternatively, pass the `-a` flag to add all unstaged changes to the commit:
 autocommit -a
 ```
 
-# Roadmap:
+## Roadmap:
 
 - [ ] Add more LLM providers / model options
 - [ ] Better documentation
