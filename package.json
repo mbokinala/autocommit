@@ -1,7 +1,7 @@
 {
   "name": "auto-commit-message",
-  "version": "1.0.0",
-  "description": "",
+  "version": "0.0.1",
+  "description": "Use an LLM to generate a git commit message based on the diff",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
