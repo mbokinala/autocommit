@@ -27,7 +27,7 @@ if (options.all) {
 // get the diff
 const diff = (0, child_process_1.execSync)("git --no-pager diff --staged").toString();
 if (diff.trim().length === 0) {
-    console.log("No staged changes to commit, exiting. Did you forget to run `git add`?");
+    console.log("No staged changes to commit, exiting. Re-run with -a to commit all changes or manually add the changes you want to commit with git add <file>.");
     process.exit(0);
 }
 async function generateCommitMessage(diff) {
@@ -49,15 +49,7 @@ async function generateCommitMessage(diff) {
 }
 async function main() {
     const commitMessage = await generateCommitMessage(diff);
-    // let commitCommand = "git commit";
-    // commitCommand += ` -m "${commitMessage.summary}"`;
-    // if (commitMessage.body) {
-    //   commitCommand += ` -m "${commitMessage.body}"`;
-    // }
-    // console.log("commit msg", commitCommand);
-    // // TODO: get user confirmation before committing
-    // execSync(commitCommand, { stdio: "inherit" });
-    const result = (0, child_process_1.spawnSync)("git", [
+    (0, child_process_1.spawnSync)("git", [
         "commit",
         "-m",
         commitMessage.summary,

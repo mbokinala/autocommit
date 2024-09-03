@@ -38,7 +38,7 @@ if (options.all) {
 const diff = execSync("git --no-pager diff --staged").toString();
 if (diff.trim().length === 0) {
   console.log(
-    "No staged changes to commit, exiting. Did you forget to run `git add`?"
+    "No staged changes to commit, exiting. Re-run with -a to commit all changes or manually add the changes you want to commit with git add <file>."
   );
   process.exit(0);
 }
