@@ -30,17 +30,9 @@ const openai = createOpenAI({
 
 const SYSTEM_PROMPT = `You are a helpful assistant that produces git commit messages based on the changes in a git diff.`;
 
-if (options.all) {
-  execSync("git add -A", { stdio: "inherit" });
-}
-
-// get the diff
-const diff = execSync("git --no-pager diff --staged").toString();
-if (diff.trim().length === 0) {
-  console.log(
-    "No staged changes to commit, exiting. Re-run with -a to commit all changes or manually add the changes you want to commit with git add <file>."
-  );
-  process.exit(0);
+async function getDiff() {
+  // get the diff
+  return execSync("git --no-pager diff --staged").toString();
 }
 
 async function generateCommitMessage(diff: string) {
@@ -65,6 +57,18 @@ async function generateCommitMessage(diff: string) {
 }
 
 async function main() {
+  if (options.all) {
+    execSync("git add -A", { stdio: "inherit" });
+  }
+
+  const diff = await getDiff();
+  if (diff.trim().length === 0) {
+    console.log(
+      "No staged changes to commit, exiting. Re-run with -a to commit all changes or manually add the changes you want to commit with git add <file>."
+    );
+    process.exit(1);
+  }
+
   const commitMessage = await generateCommitMessage(diff);
 
   spawnSync(
