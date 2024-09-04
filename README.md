@@ -1,18 +1,14 @@
 # autocommit
 
-A small command-line utility to generate commit messages by passing the git diff to an LLM. No more `"wip"`, `"stuff`, or `"sdmcskdc"` cluttering the commit log.
+A small command-line utility to generate commit messages by passing the git diff to an LLM. No more `"wip"`, `"stuff"`, or `"sdmcskdc"` cluttering the commit log.
 
 ## Installation
-
-**TODO: make accessible via npm**
-
-1. Clone this repo
-2. Install dependences with `npm install`
-3. Install the tool globally with `npm install -g .`
-
-## Setup
-1. Get an API key from [OpenAI](https://platform.openai.com/account/api-keys)
-2. Set the API key as an environment variable in your `.zshrc` or `.bashrc`:
+1. Install with npm:
+    ```sh
+    npm install -g @mbokinala/autocommit
+    ```
+2. Get an API key from [OpenAI](https://platform.openai.com/account/api-keys)
+3. Set the API key as an environment variable in your `.zshrc` or `.bashrc` (you'll need to reload the shell for the change to take effect):
     ```
     export OPENAI_API_KEY=...
     ```
