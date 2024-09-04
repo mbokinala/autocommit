@@ -34,5 +34,7 @@ autocommit -a
 - [ ] Add more LLM providers / model options
 - [ ] Better documentation
 - [ ] Customizable system prompt
-- [ ] publish/distribute on npm/brew
-- [ ] store API key / model preference in dedicated config file
+- [ ] Publish/distribute on npm/brew
+- [ ] Store API key / model preference in dedicated config file
+- [ ] Add tests
+- [ ] Proper config management in dotfile
