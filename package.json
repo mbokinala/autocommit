@@ -1,6 +1,6 @@
 {
   "name": "@mbokinala/autocommit",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Use an LLM to generate a git commit message based on the diff",
   "main": "index.js",
   "scripts": {
@@ -16,6 +16,6 @@
     "zod": "^3.23.8"
   },
   "bin": {
-    "autocommit": "./bin/index.js"
+    "autocommit": "bin/index.js"
   }
 }
