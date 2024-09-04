@@ -1,14 +1,22 @@
 {
   "name": "@mbokinala/autocommit",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Use an LLM to generate a git commit message based on the diff",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Manav Bokinala <manav.bokinala@gmail.com> (https://mbokinala.dev)",
+  "license": "GPL-3.0-or-later",
+  "homepage": "https://github.com/mbokinala/autocommit#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mbokinala/autocommit.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mbokinala/autocommit/issues"
+  },
   "dependencies": {
     "@ai-sdk/openai": "^0.0.54",
     "ai": "^3.3.21",
