@@ -9,6 +9,7 @@ import { program } from "commander";
 
 program.name("autocommit");
 program.option("--openai-api-key <key>", "OpenAI API key");
+program.option("--dry-run", "Dry run (print the commit message but do not commit)");
 program.option("-a, --all", "add all changes to the commit");
 program.parse();
 
@@ -70,6 +71,11 @@ async function main() {
   }
 
   const commitMessage = await generateCommitMessage(diff);
+
+  if (options.dryRun) {
+    console.log(commitMessage);
+    return;
+  }
 
   spawnSync(
     "git",

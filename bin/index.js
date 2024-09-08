@@ -8,6 +8,7 @@ const zod_1 = require("zod");
 const commander_1 = require("commander");
 commander_1.program.name("autocommit");
 commander_1.program.option("--openai-api-key <key>", "OpenAI API key");
+commander_1.program.option("--dry-run", "Dry run (print the commit message but do not commit)");
 commander_1.program.option("-a, --all", "add all changes to the commit");
 commander_1.program.parse();
 const options = commander_1.program.opts();
@@ -52,6 +53,10 @@ async function main() {
         process.exit(1);
     }
     const commitMessage = await generateCommitMessage(diff);
+    if (options.dryRun) {
+        console.log(commitMessage);
+        return;
+    }
     (0, child_process_1.spawnSync)("git", [
         "commit",
         "-m",
