@@ -27,6 +27,7 @@ function writeConfig(config: Config) {
   fs.writeFileSync(CONFIG_FILE, JSON.stringify(config, null, 2));
 }
 
+
 program
   .name("autocommit")
   .option("--dry-run", "Dry run (print the commit message but do not commit)")
