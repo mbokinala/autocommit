@@ -8,9 +8,9 @@ A small command-line utility to generate commit messages by passing the git diff
     npm install -g @mbokinala/autocommit
     ```
 2. Get an API key from [OpenAI](https://platform.openai.com/account/api-keys)
-3. Set the API key as an environment variable in your `.zshrc` or `.bashrc` (you'll need to reload the shell for the change to take effect):
-    ```
-    export OPENAI_API_KEY=...
+3. Set the API key using the config command:
+    ```sh
+    autocommit config set OPENAI_API_KEY your-api-key-here
     ```
 
 ## Usage
