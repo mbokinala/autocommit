@@ -1,6 +1,6 @@
 {
   "name": "@mbokinala/autocommit",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Use an LLM to generate a git commit message based on the diff",
   "main": "index.js",
   "scripts": {
