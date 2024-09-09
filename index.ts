@@ -44,20 +44,17 @@ const configCommand = new Command('config')
   .argument('[key]', 'Configuration key')
   .argument('[value]', 'Configuration value (for "set" action)')
   .action((action, key, value) => {
-    console.log('Config command called with:', { action, key, value });
     try {
       const config = readConfig();
-      console.log('Current config:', config);
 
       if (action === 'set' && key && value) {
         const upperKey = key.toUpperCase() as keyof Config;
         config[upperKey] = value;
-        console.log(`Attempting to set ${upperKey} to ${value}`);
         writeConfig(config);
-        console.log(`Config after set:`, readConfig());
+        console.log(`Set ${upperKey} to ${value}`);
       } else if (action === 'get' && key) {
         const upperKey = key.toUpperCase() as keyof Config;
-        console.log(`Value for ${upperKey}:`, config[upperKey] || 'Not set');
+        console.log(config[upperKey] || 'Not set');
       } else {
         console.log('Invalid command. Use "config set <key> <value>" or "config get <key>"');
       }
